@@ -97,7 +97,7 @@ paths:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/Bundle'
-  /patient/{id}/$everything:
+  /Patient/{id}/$everything:
     get:
       summary: Retrieve all related resources for a patient
       description: Fetch all resources linked to a patient, paginated.
@@ -158,7 +158,7 @@ paths:
                           reference: Patient/patient-example-1
                         period:
                           start: '2025-06-01T08:00:00Z'
-  /observation:
+  /Observation:
     post:
       summary: Create an Observation resource
       description: Create an Observation, such as a hemoglobin measurement.
@@ -200,7 +200,7 @@ paths:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/Observation'
-  /condition:
+  /Condition:
     post:
       summary: Create a Condition resource
       description: Create a Condition, such as a diagnosis of hypertension.
@@ -241,7 +241,7 @@ paths:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/Condition'
-  /diagnosticreport:
+  /DiagnosticReport:
     post:
       summary: Create a DiagnosticReport resource
       description: Create a DiagnosticReport, such as a complete blood count panel.
@@ -275,7 +275,7 @@ paths:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/DiagnosticReport'
-  /encounter:
+  /Encounter:
     post:
       summary: Create an Encounter resource
       description: Create or record an Encounter, such as the first antenatal visit.
