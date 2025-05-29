@@ -99,6 +99,54 @@ paths:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/Bundle'
+  /Patient:
+    get:
+      summary: Retrieve patients for Hybrid Care Model program
+      description: |
+        Fetch all Patient resources that are linked with a Coverage beneficiary whose
+        class value is "hybrid_care_model" and that have been updated on or after 2025-02-01T00:00:00Z.
+      parameters:
+        - name: "_has:Coverage:beneficiary:class-value"
+          in: query
+          required: true
+          description: Filter by Coverage beneficiary class value.
+          schema:
+            type: string
+            default: hybrid_care_model
+        - name: _lastUpdated
+          in: query
+          required: true
+          description: Retrieve patients updated on or after the specified date/time. Use the "ge" prefix.
+          schema:
+            type: string
+            format: date-time
+            example: ge2025-02-01T00:00:00Z
+      responses:
+        '200':
+          description: Bundle containing patients for the specified Hybrid Care Model program
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+              examples:
+                hybridCarePatients:
+                  summary: Example bundle response for Hybrid Care Model
+                  value:
+                    resourceType: Bundle
+                    id: "3392393e-180e-4e4a-9320-a32346d26b49"
+                    meta:
+                      lastUpdated: "2025-05-20T09:27:09.077+00:00"
+                    type: searchset
+                    total: 41
+                    link:
+                      - relation: self
+                        url: "https://openhim-core-mamatoto.intellisoftkenya.com/fhir/Patient?_has%3ACoverage%3Abeneficiary%3Aclass-value=hybrid_care_model&_lastUpdated=ge2025-02-01T00%3A00%3A00Z"
+                    entry:
+                      - fullUrl: "https://openhim-core-mamatoto.intellisoftkenya.com/fhir/Patient/d940b680-2da1-4cfa-9a94-11055b903970"
+                        resource:
+                          resourceType: Patient
+                          id: "d940b680-2da1-4cfa-9a94-11055b903970"
+                          # ...additional patient details...
   /Patient/{id}/$everything:
     get:
       summary: Retrieve all related resources for a patient
@@ -367,54 +415,6 @@ paths:
                           reference: Patient/patient-example-1
                         period:
                           start: '2025-06-01T08:00:00Z'
-  /Patient:
-    get:
-      summary: Retrieve patients for Hybrid Care Model program
-      description: |
-        Fetch all Patient resources that are linked with a Coverage beneficiary whose
-        class value is "hybrid_care_model" and that have been updated on or after 2025-02-01T00:00:00Z.
-      parameters:
-        - name: "_has:Coverage:beneficiary:class-value"
-          in: query
-          required: true
-          description: Filter by Coverage beneficiary class value.
-          schema:
-            type: string
-            default: hybrid_care_model
-        - name: _lastUpdated
-          in: query
-          required: true
-          description: Retrieve patients updated on or after the specified date/time. Use the "ge" prefix.
-          schema:
-            type: string
-            format: date-time
-            example: ge2025-02-01T00:00:00Z
-      responses:
-        '200':
-          description: Bundle containing patients for the specified Hybrid Care Model program
-          content:
-            application/fhir+json:
-              schema:
-                $ref: '#/components/schemas/Bundle'
-              examples:
-                hybridCarePatients:
-                  summary: Example bundle response for Hybrid Care Model
-                  value:
-                    resourceType: Bundle
-                    id: "3392393e-180e-4e4a-9320-a32346d26b49"
-                    meta:
-                      lastUpdated: "2025-05-20T09:27:09.077+00:00"
-                    type: searchset
-                    total: 41
-                    link:
-                      - relation: self
-                        url: "https://openhim-core-mamatoto.intellisoftkenya.com/fhir/Patient?_has%3ACoverage%3Abeneficiary%3Aclass-value=hybrid_care_model&_lastUpdated=ge2025-02-01T00%3A00%3A00Z"
-                    entry:
-                      - fullUrl: "https://openhim-core-mamatoto.intellisoftkenya.com/fhir/Patient/d940b680-2da1-4cfa-9a94-11055b903970"
-                        resource:
-                          resourceType: Patient
-                          id: "d940b680-2da1-4cfa-9a94-11055b903970"
-                          # ...additional patient details...
 components:
   schemas:
     Patient:
