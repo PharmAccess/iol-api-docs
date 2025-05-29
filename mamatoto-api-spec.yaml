@@ -5,11 +5,12 @@ info:
     OpenAPI specification for the Momcare Program API. The API is based on the FHIR standard and provides endpoints for managing patient data,
     encounters, observations, conditions, and diagnostic reports.
     For more detailed examples and implementation guidance, see the Implementation Guide hosted at:  
-    https://build.fhir.org/ig/IntelliSOFT-Consulting/MamaToTo-FHIR-IG/
-    # This function is responsible for submitting visit data, primarily using FHIR Bundles.
-    # FHIR Bundles are the standard mechanism for grouping and transmitting related healthcare resources.
-    # For more information on FHIR Bundles and their structure, please refer to the official FHIR documentation:
-    # https://www.hl7.org/fhir/bundle.html
+    [Mamatoto Fhir IG](https://build.fhir.org/ig/IntelliSOFT-Consulting/MamaToTo-FHIR-IG/)
+
+    This function is responsible for submitting visit data, primarily using FHIR Bundles.
+    FHIR Bundles are the standard mechanism for grouping and transmitting related healthcare resources.
+    For more information on FHIR Bundles and their structure, please refer to the official FHIR documentation:
+    [FHIR Bundles](https://www.hl7.org/fhir/bundle.html)
   version: 1.0.0
 servers:
 - url: https://openhim-core-mamatoto.intellisoftkenya.com/fhir
@@ -104,10 +105,11 @@ paths:
                 $ref: '#/components/schemas/Bundle'
   /Patient/{id}/$everything:
     get:
-      summary: Retrieve all related resources for a patient
-      # Retrieves a paginated list of all resources associated with a specific patient.
-      # This endpoint supports pagination parameters (`page`, `pageSize`) to control the number of results returned per page.
-      # Use these parameters to navigate through large sets of linked resources efficiently.
+      summary: |
+        Retrieve all related resources for a patient
+        * Retrieves a paginated list of all resources associated with a specific patient.
+        * This endpoint supports pagination parameters (`page`, `pageSize`) to control the number of results returned per page.
+        * Use these parameters to navigate through large sets of linked resources efficiently.
       description: Fetch all resources linked to a patient, paginated.
       parameters:
       - name: id
