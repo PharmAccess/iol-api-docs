@@ -105,12 +105,12 @@ paths:
                 $ref: '#/components/schemas/Bundle'
   /Patient/{id}/$everything:
     get:
-      summary: |
-        Retrieve all related resources for a patient
+      summary: Retrieve all related resources for a patient
+      description: |
+        Fetch all resources linked to a patient, paginated.
         * Retrieves a paginated list of all resources associated with a specific patient.
         * This endpoint supports pagination parameters (`page`, `pageSize`) to control the number of results returned per page.
         * Use these parameters to navigate through large sets of linked resources efficiently.
-      description: Fetch all resources linked to a patient, paginated.
       parameters:
       - name: id
         in: path
