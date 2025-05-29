@@ -2,15 +2,11 @@ openapi: 3.0.0
 info:
   title: Momcare Program FHIR API
   description: |
-    OpenAPI specification for the Momcare Program API. The API is based on the FHIR standard and provides endpoints for managing patient data,
-    encounters, observations, conditions, and diagnostic reports.
-    For more detailed examples and implementation guidance, see the Implementation Guide hosted at:  
-    [Mamatoto Fhir IG](https://build.fhir.org/ig/IntelliSOFT-Consulting/MamaToTo-FHIR-IG/)
+    OpenAPI specification for the Momcare Program API. The API is based on the FHIR standard and provides endpoints for managing patient data.
+    For more detailed examples and implementation guidance, see the Implementation Guide hosted at: [Mamatoto Fhir IG](https://build.fhir.org/ig/IntelliSOFT-Consulting/MamaToTo-FHIR-IG/)
 
-    This function is responsible for submitting visit data, primarily using FHIR Bundles.
-    FHIR Bundles are the standard mechanism for grouping and transmitting related healthcare resources.
-    For more information on FHIR Bundles and their structure, please refer to the official FHIR documentation:
-    [FHIR Bundles](https://www.hl7.org/fhir/bundle.html)
+    We recommend submitting visit data, primarily using FHIR Bundles. FHIR Bundles are the standard mechanism for grouping and transmitting related healthcare resources.
+    For more information on FHIR Bundles and their structure, please refer to the official FHIR documentation: [FHIR Bundles](https://www.hl7.org/fhir/bundle.html)
   version: 1.0.0
 servers:
 - url: https://openhim-core-mamatoto.intellisoftkenya.com/fhir
@@ -18,7 +14,7 @@ servers:
 paths:
   /:
     post:
-      summary: Submit a FHIR Bundle (transaction or batch)
+      summary: Submit Patient data after visit via FHIR Bundle (transaction or batch)
       description: |
         Submit a FHIR Bundle to perform multiple operations in a single request.  
         Bundles can be of type "transaction" (all-or-nothing processing) or "batch" (independent processing of each entry).  
